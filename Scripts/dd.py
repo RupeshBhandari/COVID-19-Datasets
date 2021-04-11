@@ -29,7 +29,7 @@ try:
                 f.write(df_cases.to_markdown())
             with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
                 f.write(df_deaths.to_markdown())
-        time.sleep(2)
+        time.sleep(5.5)
 finally:
     os.system('git add .')
     os.system("git commit -m 'update'")
