@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas as pd
+import time
 url = "https://covid-193.p.rapidapi.com/statistics"
 
 headers = {
