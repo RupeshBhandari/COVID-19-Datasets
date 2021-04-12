@@ -27,9 +27,11 @@ try:
             df_deaths = pd.DataFrame(deaths)
             with open(f"{country}/cases/{querystring['day']}.md", 'w') as f:
                 f.write(df_cases.to_markdown())
+                print(f"{country} 's cases for {day} is done!")
             with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
                 f.write(df_deaths.to_markdown())
-        time.sleep(5.5)
+                print(f"{country} 's deaths for {day} is done!")
+        time.sleep(10)
 finally:
     os.system('git add .')
     os.system("git commit -m 'update'")
