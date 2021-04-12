@@ -27,10 +27,10 @@ try:
             df_deaths = pd.DataFrame(deaths)
             with open(f"{country}/cases/{querystring['day']}.md", 'w') as f:
                 f.write(df_cases.to_markdown())
-                print(f"{country} 's cases for {day} is done!")
+                print(f"{country} 's cases for 2020-06-02 is done!")
             with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
                 f.write(df_deaths.to_markdown())
-                print(f"{country} 's deaths for {day} is done!")
+                print(f"{country} 's deaths for 2020-06-02 is done!")
         time.sleep(10)
 finally:
     os.system('git add .')
