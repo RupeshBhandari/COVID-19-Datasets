@@ -17,7 +17,7 @@ cases = []
 deaths = []
 try:
     for country in countries:
-        querystring = {"country":f"{country}","day":"2021-04-12"}
+        querystring = {"country":f"{country}","day":"2021-06-02"}
         response = requests.request("GET", url, headers=headers, params=querystring)
         d = response.json()
         for i in d['response']:
