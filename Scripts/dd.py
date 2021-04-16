@@ -17,7 +17,7 @@ headers = {
 # Date Operations
 dates = []
 
-dt1 = dt.datetime(2020, 3, 1)
+dt1 = dt.datetime(2020, 4, 1)
 dt2 = dt.datetime(2020, 12, 30)
 delta = dt2 - dt1
 
@@ -38,6 +38,7 @@ try:
             querystring = {"country":f"{country}","day":f"{date}"}
             response = requests.request("GET", url, headers=headers, params=querystring)
             d = response.json()
+            print(d['response'])
             for i in d['response']:
                 cases.append(i['cases'])
                 deaths.append(i['deaths'])
