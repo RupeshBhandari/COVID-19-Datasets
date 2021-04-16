@@ -38,7 +38,7 @@ try:
             querystring = {"country":f"{country}","day":f"{date}"}
             response = requests.request("GET", url, headers=headers, params=querystring)
             d = response.json()
-            print(d['response'])
+            # print(d['response'])
             for i in d['response']:
                 cases.append(i['cases'])
                 deaths.append(i['deaths'])
