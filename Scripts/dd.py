@@ -13,29 +13,26 @@ headers = {
     'x-rapidapi-host': "covid-193.p.rapidapi.com"
     }
 
-datelist = pd.date_range(datetime.today(), periods=100).to_pydatetime().tolist()
-print(print [(datetime.date.today() - datetime.timedelta(days=x)).strftime('%Y-%m-%d') for x in range(-5, 0)])
-
 cases = []
 deaths = []
-# try:
-#     for country in countries:
-#         querystring = {"country":f"{country}","day":"2020-06-12"}
-#         response = requests.request("GET", url, headers=headers, params=querystring)
-#         d = response.json()
-#         for i in d['response']:
-#             cases.append(i['cases'])
-#             deaths.append(i['deaths'])
-#             df_cases = pd.DataFrame(cases)
-#             df_deaths = pd.DataFrame(deaths)
-#             with open(f"{country}/cases/{querystring['day']}.md", 'w') as f:
-#                 f.write(df_cases.to_markdown())
-#                 print(f"{country} 's cases for 2020-06-02 is done!")
-#             with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
-#                 f.write(df_deaths.to_markdown())
-#                 print(f"{country} 's deaths for 2020-06-02 is done!")
-#         time.sleep(10)
-# finally:
-#     os.system('git add .')
-#     os.system("git commit -m 'update'")
-#     os.system('git push')
+try:
+    for country in countries:
+        querystring = {"country":f"{country}","day":"2020-06-12"}
+        response = requests.request("GET", url, headers=headers, params=querystring)
+        d = response.json()
+        for i in d['response']:
+            cases.append(i['cases'])
+            deaths.append(i['deaths'])
+            df_cases = pd.DataFrame(cases)
+            df_deaths = pd.DataFrame(deaths)
+            with open(f"{country}/cases/{querystring['day']}.md", 'w') as f:
+                f.write(df_cases.to_markdown())
+                print(f"{country} 's cases for 2020-06-02 is done!")
+            with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
+                f.write(df_deaths.to_markdown())
+                print(f"{country} 's deaths for 2020-06-02 is done!")
+        time.sleep(10)
+finally:
+    os.system('git add .')
+    os.system("git commit -m 'update'")
+    os.system('git push')
