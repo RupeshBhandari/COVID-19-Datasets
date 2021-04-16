@@ -13,25 +13,28 @@ headers = {
     'x-rapidapi-host': "covid-193.p.rapidapi.com"
     }
 
+dates = ['2020-06-15', '2020-06-16']
+
 cases = []
 deaths = []
 try:
-    for country in countries:
-        querystring = {"country":f"{country}","day":"2020-06-12"}
-        response = requests.request("GET", url, headers=headers, params=querystring)
-        d = response.json()
-        for i in d['response']:
-            cases.append(i['cases'])
-            deaths.append(i['deaths'])
-            df_cases = pd.DataFrame(cases)
-            df_deaths = pd.DataFrame(deaths)
-            with open(f"{country}/cases/{querystring['day']}.md", 'w') as f:
-                f.write(df_cases.to_markdown())
-                print(f"{country} 's cases for 2020-06-02 is done!")
-            with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
-                f.write(df_deaths.to_markdown())
-                print(f"{country} 's deaths for 2020-06-02 is done!")
-        time.sleep(10)
+    for date in dates:
+        for country in countries:
+            querystring = {"country":f"{country}","day":"2020-06-15"}
+            response = requests.request("GET", url, headers=headers, params=querystring)
+            d = response.json()
+            for i in d['response']:
+                cases.append(i['cases'])
+                deaths.append(i['deaths'])
+                df_cases = pd.DataFrame(cases)
+                df_deaths = pd.DataFrame(deaths)
+                with open(f"{country}/cases/{querystring['day']}.md", 'w') as f:
+                    f.write(df_cases.to_markdown())
+                    print(f"{country} 's cases for 2020-06-02 is done!")
+                with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
+                    f.write(df_deaths.to_markdown())
+                    print(f"{country} 's deaths for 2020-06-02 is done!")
+            time.sleep(10)
 finally:
     os.system('git add .')
     os.system("git commit -m 'update'")
