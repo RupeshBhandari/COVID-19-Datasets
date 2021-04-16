@@ -17,7 +17,7 @@ headers = {
 # Date Operations
 dates = []
 
-dt1 = dt.datetime(2020, 4, 1)
+dt1 = dt.datetime(2020, 3, 31)
 dt2 = dt.datetime(2020, 12, 30)
 delta = dt2 - dt1
 
