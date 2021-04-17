@@ -17,7 +17,7 @@ headers = {
 # Date Operations
 dates = []
 
-dt1 = dt.datetime(2020, 3, 31)
+dt1 = dt.datetime(2020, 4, 7)
 dt2 = dt.datetime(2020, 12, 30)
 delta = dt2 - dt1
 
@@ -39,6 +39,13 @@ try:
             response = requests.request("GET", url, headers=headers, params=querystring)
             d = response.json()
             # print(d['response'])
+            # CHeck for files:
+            if os.path.exists(f'{country}'):
+                pass
+            else:
+                os.mkdir(f'{country}')
+                os.mkdir(f'{country}/cases')
+                os.mkdir(f'{country}/deaths')
             for i in d['response']:
                 cases.append(i['cases'])
                 deaths.append(i['deaths'])
