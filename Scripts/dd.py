@@ -17,7 +17,7 @@ headers = {
 # Date Operations
 dates = []
 
-dt1 = dt.datetime(2020, 4, 7)
+dt1 = dt.datetime(2020, 5, 6)
 dt2 = dt.datetime(2020, 12, 30)
 delta = dt2 - dt1
 
@@ -57,6 +57,10 @@ try:
                 with open(f"{country}/deaths/{querystring['day']}.md", 'w') as f:
                     f.write(df_deaths.to_markdown())
                     print(f"{country} 's deaths for {date} is done!")
+            os.system('git add .')
+            os.system("git commit -m 'update'")
+            os.system('git push')
+            print(f"{country}'s data updated in Git Repo")        
             time.sleep(20)
 finally:
     os.system('git add .')
