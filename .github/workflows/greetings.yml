@@ -14,4 +14,4 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'Thanks for reporting the issue for ${{ github.event_name }}!'
-        pr-message: 'Message that will be displayed on users first pull request'
+        pr-message: 'Thanks for the pull request'
