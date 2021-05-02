@@ -30,7 +30,6 @@ for i in range(0, delta.days):
 
 
 
-
 cases = []
 deaths = []
 try:
