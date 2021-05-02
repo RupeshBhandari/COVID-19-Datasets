@@ -1,12 +1,21 @@
-name: Autocloser
-on: [issues, pull_request]
+name: "Intercept bad issue/PRs"
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
 jobs:
   autoclose:
     runs-on: ubuntu-latest
     steps:
-    - name: Autoclose issues that did not follow issue template
+    - name: Auto close issues/pr that did not follow template
       uses: roots/issue-closer@v1.1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-close-message: "@${issue.user.login} this issue was automatically closed because it did not follow the issue template"
-        issue-pattern: ".*guidelines for Contributing.*"
+        issue-pattern: "(\\[x\\]|\\[X\\]) I have read"
+        issue-close-message: ":wave: Hi @${issue.user.login},\n\nThis issue is being automatically closed because it does not follow the issue template."
+        pr-pattern: "(\\[x\\]|\\[X\\]) (Bug fix|New feature|Breaking change|Documentation update)|@dependabot"
+        pr-close-message: ":wave: Hi @${pull_request.user.login},\n\nThis PR is being automatically closed because it does not follow the PR template."
+
